@@ -35,6 +35,8 @@ public class AppiumController {
             	capabilities.setCapability("appPackage", "com.sec.android.app.clockpackage");
             	capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "100");
             	capabilities.setCapability("appActivity", ".ClockPackage");
+		String serial = System.getProperty("SERIAL");
+		capabilities.setCapability(MobileCapabilityType.UDID, serial);
                 driver =  new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
                 break;
             case IOS:

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#if [ "$PLATFORM" == "" ]; then
-#  echo "Please provide $PLATFORM"
-#  exit
-#fi
+if [ "$SERIAL" == "" ]; then
+  echo "Please provide $SERIAL"
+  exit
+fi
 
 #if [ "$VERSION" == "" ]; then
 #  echo "Please provide $SDK"
@@ -12,9 +12,6 @@
 
 #echo VERSION $VERSION
 #echo PLATFORM $PLATFORM
-
-adb connect localhost:7401
-
 # Run appium server
 echo "Run appium server"
 (appium &) > /dev/null 2>&1
@@ -37,5 +34,5 @@ cd testscript
 ls -al
 pwd
 #./gradlew --debug --stacktrace clean test -DTID=$TID -DUDID=$UDID -DMODEL=$MODEL -DVERSION=$VERSION -DPLATFORM=$PLATFORM -DSDK=$SDK -DDEVICESERIAL=$DEVICE_SERIAL
-mvn clean install 
+mvn clean install -DSERIAL=$SERIAL
 #-DVERSION=$VERSION -DPLATFORM=$PLATFORM
